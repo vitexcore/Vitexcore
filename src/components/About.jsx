@@ -44,8 +44,8 @@ function About() {
               <div className="grid grid-cols-2 gap-4">
                 {[
                   { number: '10+', label: 'Projects Delivered' },
-                  { number: '5+', label: 'Satisfied Clients' },
-                  { number: '2+', label: 'Years of Learning' },
+                  { number: '8+', label: 'Satisfied Clients' },
+                  { number: '3+', label: 'Years of Learning' },
                   { number: '100%', label: 'Commitment' },
                 ].map((stat) => (
                   <div key={stat.label} className="bg-black/40 rounded-xl p-4">
@@ -128,6 +128,7 @@ function About() {
       </div>
     </section>
   )
+
 }
 
 export default About

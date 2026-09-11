@@ -1,3 +1,5 @@
+import profileImage from '../Assets/vitexcore.png'
+
 // Hero section - the main landing part of the page
 function Hero() {
   function scrollTo(href) {
@@ -77,29 +79,31 @@ function Hero() {
 
           {/* Right: Profile card */}
           <div className="reveal flex justify-center lg:justify-end">
-            <div className="relative">
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#08428C]/40 to-transparent rotate-6 scale-105" />
-              <div className="absolute inset-0 rounded-3xl border-2 border-[#08428C]/20 rotate-3" />
-              <div className="relative w-72 h-80 lg:w-80 lg:h-96 rounded-3xl bg-[#374151]/30 border border-[#374151]/60 backdrop-blur-sm flex flex-col items-center justify-center gap-4 overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-[#08428C]/15 blur-2xl" />
-                <div className="absolute bottom-0 left-0 w-24 h-24 rounded-full bg-[#08428C]/10 blur-xl" />
-                <div className="relative z-10 w-24 h-24 rounded-full bg-[#08428C]/20 border-2 border-dashed border-[#08428C]/40 flex items-center justify-center">
-                  <svg className="w-10 h-10 text-[#08428C]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
-                </div>
-                <div className="relative z-10 text-center px-6">
-                  <p className="font-poppins font-semibold text-white text-lg">Innocent Danjuma</p>
-                </div>
-                <div className="relative z-10 mt-2 flex items-center gap-1.5 bg-[#08428C]/20 border border-[#08428C]/30 rounded-full px-3 py-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                  <span className="font-inter text-xs text-[#E5E7EB]/70">Open to work</span>
+            <div className="relative w-72 lg:w-80">
+              <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-[#08428C]/45 via-[#08428C]/10 to-transparent blur-2xl" />
+              <div className="absolute inset-0 rounded-[2rem] border-2 border-[#08428C]/30 rotate-3" />
+              <div className="relative aspect-[4/5] rounded-[2rem] bg-[#111827] border border-white/10 p-2 shadow-2xl shadow-[#08428C]/20 rotate-[-2deg] overflow-hidden">
+                <img
+                  src={profileImage}
+                  alt="Innocent Danjuma"
+                  className="h-full w-full rounded-[1.5rem] object-cover object-center"
+                />
+                <div className="absolute inset-2 rounded-[1.5rem] bg-gradient-to-t from-black/80 via-black/10 to-transparent pointer-events-none" />
+                <div className="absolute bottom-7 left-7 right-7 flex items-end justify-between gap-3">
+                  <div>
+                    <p className="font-poppins font-semibold text-white text-lg">Innocent Danjuma</p>
+                    <p className="font-inter text-xs text-white/65 mt-1">Frontend Developer</p>
+                  </div>
+                  <div className="flex shrink-0 items-center gap-1.5 bg-[#08428C]/90 border border-white/20 rounded-full px-3 py-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-300 animate-pulse" />
+                    <span className="font-inter text-xs text-white">Open to work</span>
+                  </div>
                 </div>
               </div>
-              <div className="absolute top-4 left-0 -translate-x-8 bg-[#374151]/80 border border-[#374151] rounded-xl px-3 py-2 backdrop-blur-sm">
+              <div className="absolute top-4 left-0 -translate-x-8 bg-[#374151]/80 border border-[#374151] rounded-xl px-3 py-2 backdrop-blur-sm rotate-2">
                 <p className="font-poppins font-semibold text-white text-xs">Tailwind CSS</p>
               </div>
-              <div className="absolute bottom-10 right-0 translate-x-8 bg-[#08428C]/90 rounded-xl px-3 py-2">
+              <div className="absolute bottom-10 right-0 translate-x-8 bg-[#08428C]/90 rounded-xl px-3 py-2 -rotate-2">
                 <p className="font-poppins font-semibold text-white text-xs">JavaScript</p>
               </div>
             </div>
