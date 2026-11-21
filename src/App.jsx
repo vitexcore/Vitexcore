@@ -12,7 +12,6 @@ import Services from './components/Services'
 import Testimonials from './components/Testimonials'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
-import ScrollToTop from './components/ScrollToTop'
 
 // Custom hook that makes elements with class "reveal" fade in on scroll
 import useReveal from './hooks/useReveal'
@@ -57,7 +56,6 @@ function App() {
       <Footer />
 
       {/* Floating scroll-to-top button */}
-      <ScrollToTop />
     </div>
   )
 }

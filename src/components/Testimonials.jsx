@@ -34,10 +34,8 @@ function Testimonials() {
     <section id="testimonials" className="py-24 relative">
       <div className="max-w-6xl mx-auto px-6">
         <div className="reveal mb-16 text-center">
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <div className="w-8 h-0.5 bg-border" />
+          <div className="flex justify-center mb-4">
             <span className="font-inter text-xs font-medium text-muted uppercase tracking-widest">Testimonials</span>
-            <div className="w-8 h-0.5 bg-border" />
           </div>
           <h2 className="font-poppins font-bold text-4xl lg:text-5xl text-copy">Client Feedback</h2>
         </div>

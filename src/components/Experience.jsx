@@ -37,8 +37,7 @@ function Experience() {
     <section id="experience" className="py-24 relative">
       <div className="max-w-6xl mx-auto px-6">
         <div className="reveal mb-16">
-          <div className="flex items-center gap-4 mb-4">
-            <div className="w-8 h-0.5 bg-border" />
+          <div className="mb-4">
             <span className="font-inter text-xs font-medium text-muted uppercase tracking-widest">Experience</span>
           </div>
           <h2 className="font-poppins font-bold text-4xl lg:text-5xl text-copy">My Journey</h2>

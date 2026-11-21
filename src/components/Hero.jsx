@@ -20,8 +20,7 @@ function Hero() {
               <span className="text-accent">Innocent</span><br />
               Danjuma
             </h1>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-0.5 bg-border" />
+            <div className="mb-6">
               <p className="font-poppins font-medium text-base text-muted tracking-wide">
                 Full Stack Developer · Jos, Nigeria
               </p>
@@ -65,7 +64,7 @@ function Hero() {
                 <img
                   src={profileImage}
                   alt="Innocent Danjuma"
-                  className="h-full w-full rounded-[1.5rem] object-cover object-center grayscale"
+                  className="h-full w-full rounded-[1.5rem] object-cover object-center"
                 />
                 <div className="absolute bottom-2 left-2 right-2 flex items-end justify-between gap-3 rounded-b-[1.5rem] bg-page p-5">
                   <div>
@@ -74,21 +73,9 @@ function Hero() {
                   </div>
                 </div>
               </div>
-              <div className="absolute top-4 left-0 -translate-x-8 bg-surface border border-border rounded-xl px-3 py-2 rotate-2">
-                <p className="font-poppins font-semibold text-copy text-xs">Tailwind CSS</p>
-              </div>
-              <div className="absolute bottom-10 right-0 translate-x-8 bg-surface rounded-xl px-3 py-2 -rotate-2">
-                <p className="font-poppins font-semibold text-copy text-xs">JavaScript</p>
-              </div>
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-        <span className="font-inter text-xs text-muted">Scroll</span>
-        <div className="w-px h-8 bg-border" />
       </div>
     </section>
   )
