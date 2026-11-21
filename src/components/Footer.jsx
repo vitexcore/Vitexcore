@@ -8,25 +8,25 @@ function Footer() {
   }
 
   return (
-    <footer className="py-12 border-t border-[#374151]/40">
+    <footer className="py-12 border-t border-border">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-3 gap-10 mb-10">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-[#08428C] flex items-center justify-center">
-                <span className="font-poppins font-black text-white text-sm">ID</span>
+              <div className="w-10 h-10 rounded-lg bg-surface border border-border flex items-center justify-center">
+                <span className="font-poppins font-black text-copy text-sm">ID</span>
               </div>
-              <span className="font-poppins font-bold text-white text-lg">Innocent Danjuma</span>
+              <span className="font-poppins font-bold text-copy text-lg">Innocent Danjuma</span>
             </div>
-            <p className="font-inter text-sm text-[#E5E7EB]/40 leading-relaxed max-w-xs">
+            <p className="font-inter text-sm text-muted leading-relaxed max-w-xs">
               Full stack developer based in Jos, Nigeria, building useful web applications.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-poppins font-semibold text-white text-sm mb-4">Quick Links</h4>
+            <h4 className="font-poppins font-semibold text-copy text-sm mb-4">Quick Links</h4>
             <ul className="space-y-2.5">
               {[
                 { href: '#home', label: 'Home' },
@@ -38,7 +38,7 @@ function Footer() {
                   <a
                     href={link.href}
                     onClick={(e) => { e.preventDefault(); scrollTo(link.href) }}
-                    className="font-inter text-sm text-[#E5E7EB]/40 hover:text-[#08428C] transition-colors duration-200"
+                    className="font-inter text-sm text-muted hover:text-accent transition-colors duration-200"
                   >
                     {link.label}
                   </a>
@@ -49,7 +49,7 @@ function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="font-poppins font-semibold text-white text-sm mb-4">Services</h4>
+            <h4 className="font-poppins font-semibold text-copy text-sm mb-4">Services</h4>
             <ul className="space-y-2.5">
               {['Responsive Websites', 'Landing Pages', 'Frontend Development', 'Website Maintenance'].map(
                 (service) => (
@@ -57,7 +57,7 @@ function Footer() {
                     <a
                       href="#services"
                       onClick={(e) => { e.preventDefault(); scrollTo('#services') }}
-                      className="font-inter text-sm text-[#E5E7EB]/40 hover:text-[#08428C] transition-colors duration-200"
+                      className="font-inter text-sm text-muted hover:text-accent transition-colors duration-200"
                     >
                       {service}
                     </a>
@@ -69,8 +69,8 @@ function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-8 border-t border-[#374151]/40 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="font-inter text-xs text-[#E5E7EB]/30">
+        <div className="pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="font-inter text-xs text-muted">
             &copy; 2024 Innocent Danjuma. All rights reserved.
           </p>
         </div>

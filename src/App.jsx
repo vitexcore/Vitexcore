@@ -34,7 +34,7 @@ function App() {
   useReveal()
 
   return (
-    <div className="bg-black text-[#E5E7EB] font-inter overflow-x-hidden">
+    <div className="bg-page text-copy font-inter overflow-x-hidden">
       {/* Loading screen */}
       {loading && <Loader />}
 

@@ -35,16 +35,13 @@ const timelineItems = [
 function Experience() {
   return (
     <section id="experience" className="py-24 relative">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute left-0 bottom-0 w-[500px] h-[500px] rounded-full bg-[#08428C]/5 blur-3xl" />
-      </div>
       <div className="max-w-6xl mx-auto px-6">
         <div className="reveal mb-16">
           <div className="flex items-center gap-4 mb-4">
-            <div className="w-8 h-0.5 bg-[#08428C]" />
-            <span className="font-inter text-xs font-medium text-[#08428C] uppercase tracking-widest">Experience</span>
+            <div className="w-8 h-0.5 bg-border" />
+            <span className="font-inter text-xs font-medium text-muted uppercase tracking-widest">Experience</span>
           </div>
-          <h2 className="font-poppins font-bold text-4xl lg:text-5xl text-white">My Journey</h2>
+          <h2 className="font-poppins font-bold text-4xl lg:text-5xl text-copy">My Journey</h2>
         </div>
 
         <div className="max-w-3xl">
@@ -55,37 +52,37 @@ function Experience() {
               <div key={item.title} className={`reveal relative pl-12 ${isLast ? '' : 'pb-12'}`}>
                 {/* Vertical line (not shown on last item) */}
                 {!isLast && (
-                  <div className="absolute left-4 top-5 bottom-0 w-px bg-[#374151]/50" />
+                  <div className="absolute left-4 top-5 bottom-0 w-px bg-border" />
                 )}
 
                 {/* Dot */}
                 <div
-                  className={`absolute left-0 top-4 w-8 h-8 rounded-full bg-[#08428C] border-4 border-black flex items-center justify-center ${item.isActive ? 'ring-4 ring-[#08428C]/20' : ''}`}
+                  className={`absolute left-0 top-4 w-8 h-8 rounded-full bg-surface border-4 border-page flex items-center justify-center ${item.isActive ? '' : ''}`}
                 >
-                  <div className={`w-2 h-2 rounded-full bg-white ${item.isActive ? 'animate-pulse' : ''}`} />
+                  <div className="w-2 h-2 rounded-full bg-muted" />
                 </div>
 
                 {/* Card */}
                 <div
-                  className={`rounded-2xl p-6 hover:border-[#08428C]/30 transition-colors duration-200 border ${
+                  className={`rounded-2xl p-6 hover:border-border transition-colors duration-200 border ${
                     item.isActive
-                      ? 'bg-[#08428C]/10 border-[#08428C]/30'
-                      : 'bg-[#374151]/15 border-[#374151]/50'
+                      ? 'bg-surface border-border'
+                      : 'bg-surface border-border'
                   }`}
                 >
                   <div className="flex items-center justify-between flex-wrap gap-2 mb-3">
-                    <h3 className="font-poppins font-semibold text-white text-lg">{item.title}</h3>
+                    <h3 className="font-poppins font-semibold text-copy text-lg">{item.title}</h3>
                     <span
                       className={`font-inter text-xs rounded-full px-3 py-1 ${
                         item.isActive
-                          ? 'text-white bg-[#08428C]'
-                          : 'text-[#08428C] bg-[#08428C]/10 border border-[#08428C]/20'
+                          ? 'text-muted bg-page border border-border'
+                          : 'text-muted bg-page border border-border'
                       }`}
                     >
                       {item.year}
                     </span>
                   </div>
-                  <p className="font-inter text-sm text-[#E5E7EB]/50 leading-relaxed">{item.description}</p>
+                  <p className="font-inter text-sm text-muted leading-relaxed">{item.description}</p>
                 </div>
               </div>
             )

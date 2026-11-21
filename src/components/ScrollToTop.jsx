@@ -21,7 +21,7 @@ function ScrollToTop() {
       id="scroll-top"
       onClick={scrollToTop}
       aria-label="Scroll to top"
-      className={`fixed bottom-8 right-8 w-12 h-12 bg-[#08428C] hover:bg-[#0a52b0] text-white rounded-xl shadow-lg flex items-center justify-center z-40 transition-all duration-300 hover:-translate-y-0.5 ${
+      className={`fixed bottom-8 right-8 w-12 h-12 bg-surface hover:bg-surface text-copy rounded-xl  flex items-center justify-center z-40 transition-all duration-300 hover:-translate-y-0.5 ${
         visible ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
       }`}
     >
