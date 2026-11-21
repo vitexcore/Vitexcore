@@ -1,4 +1,6 @@
 // About section showing profile card and bio text
+import cvUrl from '../CV/Innocent Danjuma.pdf'
+
 function About() {
   return (
     <section id="about" className="py-24 relative">
@@ -29,7 +31,7 @@ function About() {
                 </div>
                 <div>
                   <h3 className="font-poppins font-bold text-xl text-white">Innocent Danjuma</h3>
-                  <p className="font-inter text-sm text-[#08428C] mt-0.5">Frontend Developer</p>
+                  <p className="font-inter text-sm text-[#08428C] mt-0.5">Full Stack Developer</p>
                   <div className="flex items-center gap-1.5 mt-2">
                     <svg className="w-3.5 h-3.5 text-[#E5E7EB]/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -85,12 +87,11 @@ function About() {
           {/* Bio text */}
           <div className="reveal">
             <p className="font-inter text-base text-[#E5E7EB]/70 leading-relaxed mb-6">
-              I&apos;m a Software Engineering student at{' '}
-              <span className="text-[#08428C] font-medium">Blockfuse Labs, Jos</span>,
-              actively sharpening my skills as a frontend developer. My journey began with mastering HTML and Tailwind CSS, and I&apos;ve since expanded into JavaScript and am currently diving deep into backend development.
+              I&apos;m Innocent Danjuma, also known as Vitex, a full stack developer based in{' '}
+              <span className="text-[#08428C] font-medium">Jos, Nigeria</span>. I build applications across frontend and backend and am building my machine learning skills.
             </p>
             <p className="font-inter text-base text-[#E5E7EB]/70 leading-relaxed mb-8">
-              I&apos;m passionate about crafting web experiences that are not just functional but genuinely feel great to use. Every project I ship reflects a commitment to clean, maintainable code and polished design that serves real users.
+              I enjoy connecting clear interfaces with server-side logic, APIs, and data workflows. I focus on readable code and practical software that serves real users.
             </p>
 
             {/* Trait list */}
@@ -115,7 +116,8 @@ function About() {
             </div>
 
             <a
-              href="#"
+              href={cvUrl}
+              download="Innocent Danjuma.pdf"
               className="inline-flex items-center gap-2 bg-[#08428C]/15 hover:bg-[#08428C]/25 border border-[#08428C]/30 text-[#08428C] font-inter font-semibold text-sm px-6 py-3 rounded-xl transition-all duration-200"
             >
               Download CV

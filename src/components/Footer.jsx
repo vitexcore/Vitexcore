@@ -20,7 +20,7 @@ function Footer() {
               <span className="font-poppins font-bold text-white text-lg">Innocent Danjuma</span>
             </div>
             <p className="font-inter text-sm text-[#E5E7EB]/40 leading-relaxed max-w-xs">
-              Frontend developer building responsive, scalable, and user-friendly web applications.
+              Full stack developer based in Jos, Nigeria, building useful web applications.
             </p>
           </div>
 
@@ -73,7 +73,6 @@ function Footer() {
           <p className="font-inter text-xs text-[#E5E7EB]/30">
             &copy; 2024 Innocent Danjuma. All rights reserved.
           </p>
-          <p className="font-inter text-xs text-[#E5E7EB]/30">Built with ❤️ by Innocent Danjuma</p>
         </div>
       </div>
     </footer>
