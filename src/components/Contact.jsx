@@ -33,17 +33,40 @@ const contactInfo = [
 ]
 
 function Contact() {
-  // Simple form state
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
+  const [isSending, setIsSending] = useState(false)
+  const [formStatus, setFormStatus] = useState(null)
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
-    // Form submission logic would go here
-    alert('Message sent! (placeholder)')
+    setIsSending(true)
+    setFormStatus(null)
+
+    const payload = Object.fromEntries(new FormData(e.currentTarget).entries())
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+      const result = await response.json().catch(() => ({}))
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Your message could not be sent. Please try again.')
+      }
+
+      setForm({ name: '', email: '', subject: '', message: '' })
+      setFormStatus({ type: 'success', message: 'Your message was sent. I’ll get back to you soon.' })
+    } catch (error) {
+      setFormStatus({ type: 'error', message: error.message || 'Your message could not be sent. Please try again.' })
+    } finally {
+      setIsSending(false)
+    }
   }
 
   const inputClass =
@@ -112,55 +135,79 @@ function Contact() {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="font-inter text-xs text-muted block mb-2">Your Name</label>
+                  <label htmlFor="contact-name" className="font-inter text-xs text-muted block mb-2">Your Name</label>
                   <input
+                    id="contact-name"
                     type="text"
                     name="name"
                     value={form.name}
                     onChange={handleChange}
                     placeholder="John Doe"
+                    autoComplete="name"
+                    maxLength={100}
+                    required
                     className={inputClass}
                   />
                 </div>
                 <div>
-                  <label className="font-inter text-xs text-muted block mb-2">Email Address</label>
+                  <label htmlFor="contact-email" className="font-inter text-xs text-muted block mb-2">Email Address</label>
                   <input
+                    id="contact-email"
                     type="email"
                     name="email"
                     value={form.email}
                     onChange={handleChange}
                     placeholder="john@example.com"
+                    autoComplete="email"
+                    maxLength={254}
+                    required
                     className={inputClass}
                   />
                 </div>
               </div>
               <div>
-                <label className="font-inter text-xs text-muted block mb-2">Subject</label>
+                <label htmlFor="contact-subject" className="font-inter text-xs text-muted block mb-2">Subject</label>
                 <input
+                  id="contact-subject"
                   type="text"
                   name="subject"
                   value={form.subject}
                   onChange={handleChange}
                   placeholder="Project Inquiry"
+                  maxLength={160}
+                  required
                   className={inputClass}
                 />
               </div>
               <div>
-                <label className="font-inter text-xs text-muted block mb-2">Message</label>
+                <label htmlFor="contact-message" className="font-inter text-xs text-muted block mb-2">Message</label>
                 <textarea
+                  id="contact-message"
                   rows={5}
                   name="message"
                   value={form.message}
                   onChange={handleChange}
                   placeholder="Tell me about your project..."
+                  maxLength={5000}
+                  required
                   className={`${inputClass} resize-none`}
                 />
               </div>
+              <div className="absolute -left-[10000px]" aria-hidden="true">
+                <label htmlFor="contact-website">Leave this field empty</label>
+                <input id="contact-website" type="text" name="website" tabIndex={-1} autoComplete="off" />
+              </div>
+              {formStatus && (
+                <p role={formStatus.type === 'error' ? 'alert' : 'status'} className="font-inter text-sm text-muted" aria-live="polite">
+                  {formStatus.message}
+                </p>
+              )}
               <button
                 type="submit"
-                className="w-full bg-surface border border-accent text-accent font-inter font-semibold text-sm py-3.5 rounded-xl transition-colors duration-200 flex items-center justify-center gap-2"
+                disabled={isSending}
+                className="w-full bg-surface border border-accent text-accent font-inter font-semibold text-sm py-3.5 rounded-xl transition-colors duration-200 flex items-center justify-center gap-2 disabled:cursor-not-allowed"
               >
-                Send Message
+                {isSending ? 'Sending…' : 'Send Message'}
                 <svg className="w-4 h-4 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                 </svg>
