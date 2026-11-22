@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useForm, ValidationError } from '@formspree/react'
 
 // Contact info items
 const contactInfo = [
@@ -33,40 +34,17 @@ const contactInfo = [
 ]
 
 function Contact() {
+  const [state, handleSubmit] = useForm('mnpdgpdr')
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
-  const [isSending, setIsSending] = useState(false)
-  const [formStatus, setFormStatus] = useState(null)
+
+  useEffect(() => {
+    if (state.succeeded) {
+      setForm({ name: '', email: '', subject: '', message: '' })
+    }
+  }, [state.succeeded])
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value })
-  }
-
-  async function handleSubmit(e) {
-    e.preventDefault()
-    setIsSending(true)
-    setFormStatus(null)
-
-    const payload = Object.fromEntries(new FormData(e.currentTarget).entries())
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      })
-      const result = await response.json().catch(() => ({}))
-
-      if (!response.ok) {
-        throw new Error(result.error || 'Your message could not be sent. Please try again.')
-      }
-
-      setForm({ name: '', email: '', subject: '', message: '' })
-      setFormStatus({ type: 'success', message: 'Your message was sent. I’ll get back to you soon.' })
-    } catch (error) {
-      setFormStatus({ type: 'error', message: error.message || 'Your message could not be sent. Please try again.' })
-    } finally {
-      setIsSending(false)
-    }
   }
 
   const inputClass =
@@ -148,6 +126,7 @@ function Contact() {
                     required
                     className={inputClass}
                   />
+                  <ValidationError field="name" errors={state.errors} className="mt-2 block font-inter text-xs text-red-400" />
                 </div>
                 <div>
                   <label htmlFor="contact-email" className="font-inter text-xs text-muted block mb-2">Email Address</label>
@@ -163,6 +142,7 @@ function Contact() {
                     required
                     className={inputClass}
                   />
+                  <ValidationError field="email" errors={state.errors} className="mt-2 block font-inter text-xs text-red-400" />
                 </div>
               </div>
               <div>
@@ -178,6 +158,7 @@ function Contact() {
                   required
                   className={inputClass}
                 />
+                <ValidationError field="subject" errors={state.errors} className="mt-2 block font-inter text-xs text-red-400" />
               </div>
               <div>
                 <label htmlFor="contact-message" className="font-inter text-xs text-muted block mb-2">Message</label>
@@ -192,22 +173,28 @@ function Contact() {
                   required
                   className={`${inputClass} resize-none`}
                 />
+                <ValidationError field="message" errors={state.errors} className="mt-2 block font-inter text-xs text-red-400" />
               </div>
               <div className="absolute -left-[10000px]" aria-hidden="true">
                 <label htmlFor="contact-website">Leave this field empty</label>
-                <input id="contact-website" type="text" name="website" tabIndex={-1} autoComplete="off" />
+                <input id="contact-website" type="text" name="_gotcha" tabIndex={-1} autoComplete="off" />
               </div>
-              {formStatus && (
-                <p role={formStatus.type === 'error' ? 'alert' : 'status'} className="font-inter text-sm text-muted" aria-live="polite">
-                  {formStatus.message}
+              {state.succeeded && (
+                <p role="status" className="font-inter text-sm text-muted" aria-live="polite">
+                  Your message was sent. I’ll get back to you soon.
+                </p>
+              )}
+              {state.errors && !state.succeeded && (
+                <p role="alert" className="font-inter text-sm text-red-400" aria-live="polite">
+                  We couldn’t send your message. Please check the form and try again.
                 </p>
               )}
               <button
                 type="submit"
-                disabled={isSending}
+                disabled={state.submitting}
                 className="w-full bg-surface border border-accent text-accent font-inter font-semibold text-sm py-3.5 rounded-xl transition-colors duration-200 flex items-center justify-center gap-2 disabled:cursor-not-allowed"
               >
-                {isSending ? 'Sending…' : 'Send Message'}
+                {state.submitting ? 'Sending…' : 'Send Message'}
                 <svg className="w-4 h-4 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                 </svg>
